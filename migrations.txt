@@ -1,0 +1,5 @@
+Comandos MIGRATIONS
+
+Add-Migration Initial
+Update-Database -Context MeuDbContext
+Update-Database -Context ApplicationDbContext

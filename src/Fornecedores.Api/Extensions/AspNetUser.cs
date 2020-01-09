@@ -15,6 +15,10 @@ namespace Fornecedores.Api.Extensions
             _accessor = accessor;
         }
 
+        public AspNetUser()
+        {
+        }
+
         public string Name => _accessor.HttpContext.User.Identity.Name;
 
         public Guid GetUserId()

@@ -22,10 +22,10 @@ namespace Fornecedores.Api.V1.Controllers
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IMapper _mapper;
 
-        public FornecedoresController(IFornecedorRepository fornecedorRepository, 
-                                      IMapper mapper, 
+        public FornecedoresController(IFornecedorRepository fornecedorRepository,
+                                      IMapper mapper,
                                       IFornecedorService fornecedorService,
-                                      INotificador notificador, 
+                                      INotificador notificador,
                                       IEnderecoRepository enderecoRepository,
                                       IUser user) : base(notificador, user)
         {
@@ -34,6 +34,12 @@ namespace Fornecedores.Api.V1.Controllers
             _fornecedorService = fornecedorService;
             _enderecoRepository = enderecoRepository;
         }
+
+        public FornecedoresController(IFornecedorRepository fornecedorRepository, INotificador notificador, IUser user) : base(notificador, user)
+        {
+            _fornecedorRepository = fornecedorRepository;
+        }
+
 
         [AllowAnonymous]
         [HttpGet]
@@ -52,7 +58,7 @@ namespace Fornecedores.Api.V1.Controllers
             return fornecedor;
         }
 
-        [ClaimsAuthorize("Fornecedor","Adicionar")]
+        [ClaimsAuthorize("Fornecedor", "Adicionar")]
         [HttpPost]
         public async Task<ActionResult<FornecedorViewModel>> Adicionar(FornecedorViewModel fornecedorViewModel)
         {
